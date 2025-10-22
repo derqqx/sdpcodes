@@ -1,15 +1,21 @@
 package decorator;
+
+import decorator.component.BasicCar;
+import decorator.component.Car;
+import decorator.concrete.LuxuryCar;
+import decorator.concrete.SportCar;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println(Messages.APP_TITLE);
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Choose car type:");
-        System.out.println("1 - Basic Car");
-        System.out.println("2 - Sport Car");
-        System.out.println("3 - Luxury Car");
-        System.out.println("4 - Sport + Luxury Car");
+        System.out.println(Messages.CHOICE_PROMPT);
+        System.out.println(Messages.OPTION_BASIC);
+        System.out.println(Messages.OPTION_SPORT_ONLY);
+        System.out.println(Messages.OPTION_LUXURY_ONLY);
+        System.out.println(Messages.OPTION_SPORT_LUXURY);
 
         int choice = sc.nextInt();
         Car car;
@@ -28,10 +34,10 @@ public class Main {
                 car = new LuxuryCar(new SportCar(new BasicCar()));
                 break;
             default:
-                System.out.println("Invalid choice. Using Basic Car by default.");
+                System.out.println(Messages.WRONG_CHOICE);
                 car = new BasicCar();
         }
-        System.out.println("\nCar assembly process:");
+        System.out.println(Messages.ASSEMBLY_PROCESS_HEADER);
         car.assemble();
     }
 }

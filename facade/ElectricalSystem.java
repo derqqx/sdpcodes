@@ -1,11 +1,11 @@
 package facade;
 
 public class ElectricalSystem {
-    public void powerOn() {
-        System.out.println("Electrical system powered on.");
+    public String powerOn() {
+        return Messages.ELECTRIC_ON;
     }
 
-    public void powerOff() {
-        System.out.println("Electrical system powered off.");
+    public String powerOff() {
+        return Messages.ELECTRIC_OFF;
     }
 }

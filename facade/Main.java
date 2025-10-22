@@ -6,22 +6,30 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         CarFacade car = new CarFacade();
 
-        while (true) {
-            System.out.println("Enter command (start / stop / exit): ");
-            String input = sc.nextLine();
+        System.out.println(Messages.APP_TITLE);
 
-            if (input.equalsIgnoreCase("start")) {
-                car.startCar();
-            } else if (input.equalsIgnoreCase("stop")) {
-                car.stopCar();
-            } else if (input.equalsIgnoreCase("exit")) {
-                System.out.println("Exiting program...");
-                break;
-            } else {
-                System.out.println("Unknown command. Try again.\n");
+        label:
+        while (true) {
+            System.out.println(Messages.COMMAND_PROMPT);
+            String input = sc.nextLine().trim().toLowerCase();
+
+            switch (input) {
+                case "1":
+                case "start":
+                    car.startCar();
+                    break;
+                case "2":
+                case "stop":
+                    car.stopCar();
+                    break;
+                case "3":
+                case "exit":
+                    System.out.println(Messages.EXITING);
+                    break label;
+                default:
+                    System.out.println(Messages.WRONG_COMMAND);
+                    break;
             }
         }
-
-        sc.close();
     }
 }
